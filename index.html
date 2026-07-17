@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO ═══ -->
+  <title>TontineClair – Gérez vos tontines simplement et en toute sécurité</title>
+  <meta name="description" content="TontineClair facilite la gestion des cotisations, bénéficiaires, paiements, votes, prêts et cagnottes de vos tontines depuis une application simple et sécurisée.">
+  <meta name="keywords" content="tontine, gestion tontine, cotisation, Mobile Money, FCFA, application tontine, Afrique, fintech">
+  <meta name="author" content="TontineClair">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.tontineclair.com/">
+
+  <!-- ═══ Open Graph / WhatsApp / Réseaux sociaux ═══ -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.tontineclair.com/">
+  <meta property="og:title"       content="TontineClair – Gérez vos tontines simplement et en toute sécurité">
+  <meta property="og:description" content="TontineClair facilite la gestion des cotisations, bénéficiaires, paiements, votes, prêts et cagnottes de vos tontines depuis une application simple et sécurisée.">
+  <meta property="og:image"       content="assets/images/og_image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"      content="fr_FR">
+  <meta property="og:site_name"   content="TontineClair">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="TontineClair – Gérez vos tontines simplement et en toute sécurité">
+  <meta name="twitter:description" content="TontineClair facilite la gestion des cotisations, bénéficiaires, paiements, votes, prêts et cagnottes de vos tontines depuis une application simple et sécurisée.">
+  <meta name="twitter:image"       content="assets/images/og_image.png">
+
+  <!-- ═══ Favicon SVG inline ═══ -->
+  <link rel="icon" type="image/png" href="assets/images/logo_tc_small.png">
+  <link rel="apple-touch-icon" href="assets/images/logo_tc.png">
+
+  <!-- ═══ Styles ═══ -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="assets/images/logo_tc_small.png" alt="TontineClair" class="nav-logo-img">
+    Tontine<span>Clair</span>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#pourquoi">Pourquoi TontineClair</a>
+    <a href="#screenshots">L'application</a>
+    <a href="#comment">Comment ça marche</a>
+    <a href="#premium">Premium</a>
+    <a href="#faq">FAQ</a>
+    <a href="#telecharger" class="btn-nav">Télécharger</a>
+  </div>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HÉRO
+══════════════════════════════════════ -->
+<section class="hero" id="accueil">
+  <div class="hero-particles"></div>
+
+  <div class="hero-content">
+    <div class="badge-hero">Application mobile · Disponible sur Android &amp; iOS</div>
+
+    <h1>Gérez vos tontines<br><span class="gold">simplement, clairement</span><br>et en toute sécurité</h1>
+
+    <p class="hero-desc">
+      TontineClair est l'application qui modernise la gestion de vos tontines.
+      Cotisations, caisse commune, prêts, votes — tout est transparent,
+      en temps réel, pour tous les membres.
+    </p>
+
+    <div class="hero-btns">
+      <a href="https://play.google.com/store/apps/details?id=com.tontineclair.app" class="btn-store btn-primary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3.18 23.76c.3.17.64.24.98.2l13.09-11.76L13.53 8.5 3.18 23.76zM20.5 10.1l-2.84-1.63-3.53 3.17 3.53 3.16 2.87-1.65c.82-.47.82-1.58-.03-2.05zM1.04 1.43C.72 1.8.54 2.32.54 2.96v18.08c0 .64.19 1.16.51 1.53l.08.07L10.9 12.74v-.24L1.12 1.36l-.08.07zM13.53 15.5l3.63-3.26-12.98-7.47 9.35 10.73z"/></svg>
+        <span><small>Disponible sur</small><br>Google Play</span>
+      </a>
+      <a href="https://apps.apple.com/app/tontineclair/id000000000" class="btn-store btn-store-apple" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span><small>Disponible sur</small><br>App Store</span>
+      </a>
+      <a href="#screenshots" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        Découvrir l'application
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num" data-target="5000" data-suffix="+">0</div>
+        <div class="stat-label">Membres actifs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="800" data-suffix="+">0</div>
+        <div class="stat-label">Tontines créées</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-target="98" data-suffix="%">0</div>
+        <div class="stat-label">Satisfaction</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone-hero-wrap">
+      <div class="phone-hero-glow"></div>
+
+      <!-- Téléphone gauche décoratif -->
+      <div class="phone-float left">
+        <img src="assets/images/screen4_membres.png" alt="Membres TontineClair" loading="lazy">
+      </div>
+
+      <!-- Téléphone principal -->
+      <div class="phone-hero-frame">
+        <div class="phone-notch"></div>
+        <img src="assets/images/screen1_mes_tontines.png" alt="Mes tontines – TontineClair">
+      </div>
+
+      <!-- Téléphone droit décoratif -->
+      <div class="phone-float right">
+        <img src="assets/images/screen3_cotisations.png" alt="Cotisations TontineClair" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     POURQUOI TONTINECLAIR
+══════════════════════════════════════ -->
+<section class="why" id="pourquoi">
+  <div class="text-center fade-up">
+    <span class="section-label">Nos fonctionnalités</span>
+    <h2 class="section-title">Pourquoi choisir <span class="gold">TontineClair</span>&nbsp;?</h2>
+    <p class="section-subtitle">Une solution complète pensée pour la gestion moderne des tontines en Afrique et dans la diaspora.</p>
+  </div>
+
+  <div class="features-grid">
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">💰</div>
+      <h3>Gestion transparente des cotisations</h3>
+      <p>Chaque cotisation est enregistrée en temps réel. Tous les membres voient exactement qui a payé et qui ne l'a pas encore fait.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">👥</div>
+      <h3>Suivi des membres et bénéficiaires</h3>
+      <p>Gérez l'ordre de passage, les bénéficiaires du tour et les scores de confiance de chaque membre en un coup d'œil.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">🔔</div>
+      <h3>Rappels automatiques</h3>
+      <p>Relancez tous les retardataires d'un seul clic via WhatsApp. Plus besoin de courir après les membres.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">📱</div>
+      <h3>Paiements Mobile Money</h3>
+      <p>Payez directement depuis l'application via Orange Money, Moov Money, MTN MoMo ou Wave. Sécurisé et instantané.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">🗳️</div>
+      <h3>Votes et décisions collectives</h3>
+      <p>Prenez des décisions démocratiques au sein du groupe avec un système de vote sécurisé par PIN personnel.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">📋</div>
+      <h3>Journal d'audit complet</h3>
+      <p>Chaque opération est horodatée et consignée dans un journal d'audit immuable. L'historique sécurisé de toutes vos transactions.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">⭐</div>
+      <h3>Score de confiance</h3>
+      <p>Chaque membre dispose d'un score de confiance basé sur son historique de paiements. Encouragez la fiabilité.</p>
+    </div>
+
+    <div class="feature-card fade-up">
+      <div class="feature-icon">🏦</div>
+      <h3>Prêts et cagnottes</h3>
+      <p>Gérez les prêts accordés aux membres, les remboursements, et les cagnottes partagées directement depuis l'app.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SCREENSHOTS RÉELS
+══════════════════════════════════════ -->
+<section class="screenshots" id="screenshots">
+  <div class="text-center fade-up">
+    <span class="section-label">L'application en images</span>
+    <h2 class="section-title">Votre tontine, <span class="gold">toujours sous contrôle</span></h2>
+    <p class="section-subtitle">Découvrez l'interface réelle de TontineClair — simple, claire et conçue pour tous.</p>
+  </div>
+
+  <div class="phones-showcase">
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen1_mes_tontines.png" alt="Mes tontines" loading="lazy">
+      </div>
+      <span class="phone-label">📋 Liste de vos tontines</span>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen7_dashboard_premium.png" alt="Dashboard Premium" loading="lazy">
+      </div>
+      <span class="phone-label">🏆 Dashboard tontine Premium</span>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen6_ordre_passage.png" alt="Ordre de passage" loading="lazy">
+      </div>
+      <span class="phone-label">🔄 Ordre de passage & cagnotte</span>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen3_cotisations.png" alt="Cotisations" loading="lazy">
+      </div>
+      <span class="phone-label">💳 Suivi des cotisations</span>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen4_membres.png" alt="Membres et scores" loading="lazy">
+      </div>
+      <span class="phone-label">👥 Membres & scores de confiance</span>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen2_caisse.png" alt="Caisse commune" loading="lazy">
+      </div>
+      <span class="phone-label">🏦 Caisse commune en direct</span>
+    </div>
+
+    <div class="phone-card">
+      <div class="phone-mockup">
+        <div class="phone-top-bar"></div>
+        <img src="assets/images/screen5_audit.png" alt="Journal d'audit" loading="lazy">
+      </div>
+      <span class="phone-label">📜 Journal d'audit horodaté</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     COMMENT ÇA MARCHE
+══════════════════════════════════════ -->
+<section class="how" id="comment">
+  <div class="text-center fade-up">
+    <span class="section-label">Mode d'emploi</span>
+    <h2 class="section-title">Démarrez en <span class="gold">3 étapes</span></h2>
+    <p class="section-subtitle">TontineClair est conçu pour être simple dès la première utilisation.</p>
+  </div>
+
+  <div class="steps-container">
+    <div class="step">
+      <div class="step-icon">📲</div>
+      <div class="step-num">1</div>
+      <h3>Créez ou rejoignez une tontine</h3>
+      <p>Téléchargez l'application, créez votre tontine en quelques secondes ou rejoignez-en une existante avec son code unique. Invitez vos membres par WhatsApp.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">💸</div>
+      <div class="step-num">2</div>
+      <h3>Cotisez et suivez les opérations</h3>
+      <p>Payez vos cotisations via Mobile Money directement dans l'application. Suivez la caisse commune, les prêts, les pénalités et l'ordre de passage en temps réel.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">🎉</div>
+      <div class="step-num">3</div>
+      <h3>Recevez votre part en transparence</h3>
+      <p>Lorsque c'est votre tour, la cagnotte vous est versée. Tout est tracé, horodaté et visible par tous les membres — aucune surprise, aucun litige.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PREMIUM
+══════════════════════════════════════ -->
+<section class="premium" id="premium">
+  <div class="premium-grid">
+
+    <div>
+      <span class="section-label fade-up">Offre Premium</span>
+      <h2 class="section-title fade-up">Passez à la vitesse <span class="gold">supérieure</span></h2>
+      <p class="section-subtitle fade-up">Débloquez toutes les fonctionnalités avancées pour gérer vos tontines comme un professionnel.</p>
+
+      <div class="premium-features">
+        <div class="premium-feat fade-up">
+          <div class="premium-feat-icon">🔢</div>
+          <div>
+            <h4>Plusieurs tontines simultanées</h4>
+            <p>Gérez autant de tontines que vous voulez, sans limitation.</p>
+          </div>
+        </div>
+        <div class="premium-feat fade-up">
+          <div class="premium-feat-icon">⚡</div>
+          <div>
+            <h4>Fonctionnalités avancées</h4>
+            <p>Accès complet aux prêts, cagnottes, votes, pénalités et Mode Pro.</p>
+          </div>
+        </div>
+        <div class="premium-feat fade-up">
+          <div class="premium-feat-icon">🎯</div>
+          <div>
+            <h4>Paiements Mobile Money intégrés</h4>
+            <p>Orange Money, Moov, MTN, Wave — paiement direct depuis l'app.</p>
+          </div>
+        </div>
+        <div class="premium-feat fade-up">
+          <div class="premium-feat-icon">🛡️</div>
+          <div>
+            <h4>Assistance prioritaire</h4>
+            <p>Support WhatsApp dédié et réponse sous 24h garantie.</p>
+          </div>
+        </div>
+        <div class="premium-feat fade-up">
+          <div class="premium-feat-icon">📊</div>
+          <div>
+            <h4>Rapports et exports</h4>
+            <p>Exportez vos données et partagez les récapitulatifs automatiquement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="premium-cards">
+      <div class="price-card standard fade-up">
+        <div class="price-period">Mensuel</div>
+        <div class="price-amount"><span>FCFA </span>2 500</div>
+        <div class="price-desc">Par mois, résiliable à tout moment</div>
+        <div class="price-store-btns">
+          <a href="https://play.google.com/store/apps/details?id=com.tontineclair.app" class="price-cta" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.98.2l13.09-11.76L13.53 8.5 3.18 23.76zM20.5 10.1l-2.84-1.63-3.53 3.17 3.53 3.16 2.87-1.65c.82-.47.82-1.58-.03-2.05zM1.04 1.43C.72 1.8.54 2.32.54 2.96v18.08c0 .64.19 1.16.51 1.53l.08.07L10.9 12.74v-.24L1.12 1.36l-.08.07zM13.53 15.5l3.63-3.26-12.98-7.47 9.35 10.73z"/></svg>
+            Google Play
+          </a>
+          <a href="https://apps.apple.com/app/tontineclair/id000000000" class="price-cta price-cta-alt" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+        </div>
+      </div>
+
+      <div class="price-card annuel fade-up">
+        <div class="price-badge">🔥 MEILLEURE OFFRE</div>
+        <div class="price-period">Annuel</div>
+        <div class="price-amount"><span>FCFA </span>25 000</div>
+        <div class="price-desc">Soit l'équivalent de 2 mois offerts</div>
+        <div class="price-store-btns">
+          <a href="https://play.google.com/store/apps/details?id=com.tontineclair.app" class="price-cta" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.98.2l13.09-11.76L13.53 8.5 3.18 23.76zM20.5 10.1l-2.84-1.63-3.53 3.17 3.53 3.16 2.87-1.65c.82-.47.82-1.58-.03-2.05zM1.04 1.43C.72 1.8.54 2.32.54 2.96v18.08c0 .64.19 1.16.51 1.53l.08.07L10.9 12.74v-.24L1.12 1.36l-.08.07zM13.53 15.5l3.63-3.26-12.98-7.47 9.35 10.73z"/></svg>
+            Google Play
+          </a>
+          <a href="https://apps.apple.com/app/tontineclair/id000000000" class="price-cta price-cta-alt" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TÉMOIGNAGES
+══════════════════════════════════════ -->
+<section class="testimonials" id="temoignages">
+  <div class="text-center fade-up">
+    <span class="section-label">Avis utilisateurs</span>
+    <h2 class="section-title">Ils font confiance à <span class="gold">TontineClair</span></h2>
+    <p class="section-subtitle">Des milliers d'utilisateurs gèrent déjà leurs tontines avec TontineClair.</p>
+  </div>
+
+  <div class="testi-grid">
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Depuis qu'on utilise TontineClair, plus aucun conflit dans notre groupe. Tout le monde voit les cotisations en temps réel. C'est vraiment la paix ! »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Ama K.</div>
+          <div class="testi-role">Présidente de tontine · Abidjan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Le paiement via Orange Money directement dans l'app, c'est révolutionnaire. Je n'ai plus à courir après les membres chaque mois. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">F</div>
+        <div>
+          <div class="testi-name">Franck M.</div>
+          <div class="testi-role">Membre Premium · Lomé</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Le journal d'audit nous a sauvé d'un malentendu. Tout est horodaté et transparent. Je recommande TontineClair à toutes les associations. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Marie-Claire D.</div>
+          <div class="testi-role">Trésorière · Dakar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Notre tontine diaspora est gérée depuis Paris et Accra en même temps. TontineClair nous a réunis malgré la distance. Excellent outil ! »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">K</div>
+        <div>
+          <div class="testi-name">Kofi A.</div>
+          <div class="testi-role">Tontine diaspora · Paris</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">« L'application est vraiment intuitive. Même ma grand-mère qui n'est pas à l'aise avec les smartphones a réussi à voir ses cotisations. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Salimata B.</div>
+          <div class="testi-role">Membre · Bamako</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">« Le score de confiance est une excellente idée. Maintenant tout le monde veut bien payer pour garder un bon score. Ça motive vraiment. »</p>
+      <div class="testi-author">
+        <div class="testi-avatar">E</div>
+        <div>
+          <div class="testi-name">Éric N.</div>
+          <div class="testi-role">Président · Douala</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="text-center fade-up">
+    <span class="section-label">Questions fréquentes</span>
+    <h2 class="section-title">Vous avez des <span class="gold">questions ?</span></h2>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <div class="faq-q">
+        TontineClair est-il gratuit ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">Oui, TontineClair propose une version gratuite complète pour une tontine. L'abonnement Premium à 2 500 FCFA/mois ou 25 000 FCFA/an débloque la gestion de plusieurs tontines simultanées et toutes les fonctionnalités avancées.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Quels opérateurs Mobile Money sont supportés ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">TontineClair prend en charge Orange Money, Moov Money, MTN MoMo et Wave. Les paiements sont traités de manière sécurisée via SycaPay, notre partenaire de paiement certifié.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Mes données sont-elles sécurisées ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">Absolument. Toutes vos données sont chiffrées et stockées sur des serveurs sécurisés (Supabase/AWS). Le journal d'audit est immuable et horodaté. Aucune donnée financière n'est jamais partagée avec des tiers.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Combien de membres peut-on avoir dans une tontine ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">Il n'y a pas de limite stricte au nombre de membres. TontineClair est conçu pour fonctionner aussi bien pour des petits groupes de 3 personnes que pour de grandes associations de plusieurs dizaines de membres.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Peut-on gérer des tontines à distance (diaspora) ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">Oui ! TontineClair est conçu pour les groupes dispersés géographiquement. Les membres peuvent cotiser depuis n'importe où, les paiements Mobile Money fonctionnent internationalement, et toutes les informations sont synchronisées en temps réel.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Comment rejoindre une tontine existante ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">Il suffit de télécharger l'application et d'entrer le code unique de la tontine (ex : M3JQ3U) fourni par le président du groupe. Vous avez accès immédiatement à toutes les informations de la tontine.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        L'application fonctionne-t-elle sans connexion internet ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">La consultation des données récentes est disponible hors connexion. Cependant, les paiements, les mises à jour de cotisations et les notifications nécessitent une connexion internet pour être synchronisés en temps réel avec tous les membres.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Comment fonctionne le score de confiance ?
+        <div class="arrow">▼</div>
+      </div>
+      <div class="faq-a">Le score de confiance (sur 100) est calculé automatiquement en fonction de l'historique de paiements de chaque membre : paiements dans les délais, absence de pénalités, régularité. Il est visible par tous les membres et favorise la discipline collective.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA TÉLÉCHARGEMENT
+══════════════════════════════════════ -->
+<section class="cta-download" id="telecharger">
+  <h2 class="fade-up">Prêt à moderniser votre tontine ?</h2>
+  <p class="fade-up">Rejoignez des milliers d'utilisateurs qui gèrent leurs tontines en toute transparence.</p>
+  <div class="cta-btns fade-up">
+    <a href="https://play.google.com/store/apps/details?id=com.tontineclair.app" class="btn-store btn-primary" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.98.2l13.09-11.76L13.53 8.5 3.18 23.76zM20.5 10.1l-2.84-1.63-3.53 3.17 3.53 3.16 2.87-1.65c.82-.47.82-1.58-.03-2.05zM1.04 1.43C.72 1.8.54 2.32.54 2.96v18.08c0 .64.19 1.16.51 1.53l.08.07L10.9 12.74v-.24L1.12 1.36l-.08.07zM13.53 15.5l3.63-3.26-12.98-7.47 9.35 10.73z"/></svg>
+      <span><small>Disponible sur</small><br>Google Play</span>
+    </a>
+    <a href="https://apps.apple.com/app/tontineclair/id000000000" class="btn-store btn-store-apple" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span><small>Disponible sur</small><br>App Store</span>
+    </a>
+    <a href="https://wa.me/22502432176?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20TontineClair" class="whatsapp-btn" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Nous contacter sur WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:0">
+        <img src="assets/images/logo_tc_small.png" alt="TontineClair" class="nav-logo-img">
+        <span style="font-size:1.2rem;font-weight:800">Tontine<span style="color:#D99A2B">Clair</span></span>
+      </div>
+      <p>L'application qui modernise la gestion de vos tontines. Simple, transparente et sécurisée.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" aria-label="Facebook">f</a>
+        <a class="social-btn" href="#" aria-label="Instagram">📷</a>
+        <a class="social-btn" href="#" aria-label="Twitter/X">𝕏</a>
+        <a class="social-btn" href="#" aria-label="YouTube">▶</a>
+        <a class="social-btn" href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Application</h4>
+      <a href="#pourquoi">Fonctionnalités</a>
+      <a href="#screenshots">Captures d'écran</a>
+      <a href="#premium">Premium</a>
+      <a href="https://play.google.com/store/apps/details?id=com.tontineclair.app" target="_blank" rel="noopener">Google Play</a>
+      <a href="https://apps.apple.com/app/tontineclair/id000000000" target="_blank" rel="noopener">App Store</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Entreprise</h4>
+      <a href="#accueil">À propos</a>
+      <a href="#temoignages">Témoignages</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:support@tontineclair.com">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Assistance</h4>
+      <a href="mailto:support@tontineclair.com">support@tontineclair.com</a>
+      <a href="https://wa.me/22502432176?text=Bonjour%2C%20j%27ai%20besoin%20d%27aide%20avec%20TontineClair" target="_blank" rel="noopener" class="whatsapp-btn" style="margin-top:6px;padding:10px 16px;font-size:0.82rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Conditions d'utilisation</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div>© <span id="year"></span> TontineClair. Tous droits réservés.</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Conditions d'utilisation</a>
+      <a href="mailto:support@tontineclair.com">support@tontineclair.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
