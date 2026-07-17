@@ -62,6 +62,8 @@ img { max-width: 100%; display: block; }
   text-decoration: none; color: inherit;
 }
 .nav-logo span { color: var(--or); }
+.nav-brand-name { display: inline-block; white-space: nowrap; }
+.nav-brand-clair { color: var(--or); }
 .nav-logo-icon {
   width: 36px; height: 36px;
   background: var(--or);
