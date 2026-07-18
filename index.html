@@ -212,98 +212,68 @@
     <p class="section-subtitle">Découvrez l'interface réelle de TontineClair — simple, claire et conçue pour tous.</p>
   </div>
 
-  <div class="phones-showcase">
-    <div class="carousel-track">
+  <!-- ── Coverflow Premium ── -->
+  <div class="coverflow-scene" id="coverflowScene">
 
-      <!-- ── Série 1 (originale) ── -->
-      <div class="phone-card">
-        <div class="phone-mockup">
+    <!-- Flèche gauche -->
+    <button class="cf-arrow cf-arrow-left" id="cfPrev" aria-label="Précédent">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <!-- Scène 3D -->
+    <div class="cf-stage" id="cfStage">
+      <div class="cf-slide" data-index="0">
+        <div class="cf-phone">
           <img src="assets/images/screen1_mes_tontines.png" alt="Mes tontines" loading="lazy">
         </div>
-        <span class="phone-label">📋 Liste de vos tontines</span>
       </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <img src="assets/images/screen2_detail_tontine.png" alt="Détail tontine Premium" loading="lazy">
+      <div class="cf-slide" data-index="1">
+        <div class="cf-phone">
+          <img src="assets/images/screen2_detail_tontine.png" alt="Détail tontine" loading="lazy">
         </div>
-        <span class="phone-label">🏆 Détail tontine Premium</span>
       </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <img src="assets/images/screen7_modules.png" alt="Modules de gestion" loading="lazy">
-        </div>
-        <span class="phone-label">🔄 Ordre de passage & modules</span>
-      </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
+      <div class="cf-slide" data-index="2">
+        <div class="cf-phone">
           <img src="assets/images/screen3_cotisations.png" alt="Cotisations" loading="lazy">
         </div>
-        <span class="phone-label">💳 Suivi des cotisations</span>
       </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
-          <img src="assets/images/screen4_membres.png" alt="Membres et scores" loading="lazy">
+      <div class="cf-slide" data-index="3">
+        <div class="cf-phone">
+          <img src="assets/images/screen4_membres.png" alt="Membres" loading="lazy">
         </div>
-        <span class="phone-label">👥 Membres & scores de confiance</span>
       </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
+      <div class="cf-slide" data-index="4">
+        <div class="cf-phone">
           <img src="assets/images/screen5_caisse.png" alt="Caisse commune" loading="lazy">
         </div>
-        <span class="phone-label">🏦 Caisse commune en direct</span>
       </div>
-      <div class="phone-card">
-        <div class="phone-mockup">
+      <div class="cf-slide" data-index="5">
+        <div class="cf-phone">
           <img src="assets/images/screen6_audit.png" alt="Journal d'audit" loading="lazy">
         </div>
-        <span class="phone-label">📜 Journal d'audit horodaté</span>
       </div>
+    </div>
 
-      <!-- ── Série 2 (copie exacte pour loop sans saut) ── -->
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen1_mes_tontines.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">📋 Liste de vos tontines</span>
-      </div>
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen2_detail_tontine.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">🏆 Détail tontine Premium</span>
-      </div>
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen7_modules.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">🔄 Ordre de passage & modules</span>
-      </div>
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen3_cotisations.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">💳 Suivi des cotisations</span>
-      </div>
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen4_membres.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">👥 Membres & scores de confiance</span>
-      </div>
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen5_caisse.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">🏦 Caisse commune en direct</span>
-      </div>
-      <div class="phone-card" aria-hidden="true">
-        <div class="phone-mockup">
-          <img src="assets/images/screen6_audit.png" alt="" loading="lazy">
-        </div>
-        <span class="phone-label">📜 Journal d'audit horodaté</span>
-      </div>
+    <!-- Flèche droite -->
+    <button class="cf-arrow cf-arrow-right" id="cfNext" aria-label="Suivant">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
 
-    </div><!-- /carousel-track -->
+  </div><!-- /coverflow-scene -->
+
+  <!-- Caption sous le carrousel -->
+  <div class="cf-caption-wrap">
+    <p class="cf-caption" id="cfCaption">Gérez vos tontines simplement</p>
+  </div>
+
+  <!-- Indicateurs -->
+  <div class="cf-dots" id="cfDots">
+    <button class="cf-dot active" data-goto="0" aria-label="Écran 1"></button>
+    <button class="cf-dot" data-goto="1" aria-label="Écran 2"></button>
+    <button class="cf-dot" data-goto="2" aria-label="Écran 3"></button>
+    <button class="cf-dot" data-goto="3" aria-label="Écran 4"></button>
+    <button class="cf-dot" data-goto="4" aria-label="Écran 5"></button>
+    <button class="cf-dot" data-goto="5" aria-label="Écran 6"></button>
   </div>
 </section>
 
@@ -625,7 +595,7 @@
     <div class="footer-brand">
       <div class="nav-logo" style="margin-bottom:0">
         <img src="assets/images/logo_tc_small.png" alt="TontineClair" class="nav-logo-img">
-        <span style="font-size:1.2rem;font-weight:800">Tontine<span style="color:#D99A2B">Clair</span></span>
+        <span style="font-size:1.2rem;font-weight:800">Tontine<span style="color:#ffffff">Clair</span></span>
       </div>
       <p>L'application qui modernise la gestion de vos tontines. Simple, transparente et sécurisée.</p>
       <div class="footer-socials">

@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOpts);
 
-  document.querySelectorAll('.fade-up, .phone-mockup, .testi-card, .step, .feature-card').forEach(el => {
+  document.querySelectorAll('.fade-up, .testi-card, .step, .feature-card').forEach(el => {
     fadeObserver.observe(el);
   });
 
@@ -59,10 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.testi-card').forEach((card, i) => {
     card.style.transitionDelay = (i * 0.12) + 's';
   });
-  document.querySelectorAll('.phone-mockup').forEach((card, i) => {
-    card.style.transitionDelay = (i * 0.1) + 's';
-    card.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s, box-shadow 0.35s ease`;
-  });
+
   document.querySelectorAll('.step').forEach((step, i) => {
     step.style.transitionDelay = (i * 0.18) + 's';
   });
@@ -116,20 +113,117 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Téléphone carousel – swipe mobile ── */
-  const showcase = document.querySelector('.phones-showcase');
-  if (showcase) {
-    let startX, isDragging = false;
-    showcase.addEventListener('mousedown', e => { startX = e.pageX - showcase.offsetLeft; isDragging = true; });
-    showcase.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      const x = e.pageX - showcase.offsetLeft;
-      showcase.scrollLeft -= (x - startX) * 0.8;
-      startX = x;
+  /* ══════════════════════════════════════════
+     COVERFLOW PREMIUM
+  ══════════════════════════════════════════ */
+  (function initCoverflow() {
+    const scene   = document.getElementById('coverflowScene');
+    const stage   = document.getElementById('cfStage');
+    const caption = document.getElementById('cfCaption');
+    const dotsEl  = document.getElementById('cfDots');
+    if (!scene || !stage) return;
+
+    const slides = Array.from(stage.querySelectorAll('.cf-slide'));
+    const dots   = dotsEl ? Array.from(dotsEl.querySelectorAll('.cf-dot')) : [];
+    const total  = slides.length;
+
+    const CAPTIONS = [
+      'Gérez vos tontines simplement',
+      'Visualisez toutes vos tontines',
+      'Suivez toutes les cotisations',
+      'Membres & scores de confiance',
+      'Caisse commune en temps réel',
+      'Journal d\'audit horodaté',
+    ];
+
+    let current  = 0;
+    let autoTimer = null;
+    let paused   = false;
+
+    /* ── Rend la disposition coverflow ── */
+    function render(index) {
+      slides.forEach((slide, i) => {
+        const pos = ((i - index) % total + total) % total;
+        // On convertit pos en valeur signée de –⌊total/2⌋ à +⌊total/2⌋
+        let rel = i - index;
+        // normalise dans [−(total/2), total/2]
+        while (rel >  Math.floor(total / 2)) rel -= total;
+        while (rel < -Math.floor(total / 2)) rel += total;
+        // Clamp à –2 / +2 pour CSS
+        const clamp = Math.max(-2, Math.min(2, rel));
+        slide.setAttribute('data-pos', String(clamp));
+      });
+
+      // Caption
+      if (caption) {
+        caption.classList.remove('visible');
+        setTimeout(() => {
+          caption.textContent = CAPTIONS[index] || '';
+          caption.classList.add('visible');
+        }, 180);
+      }
+
+      // Dots
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    /* ── Naviguer ── */
+    function goTo(n) {
+      current = ((n % total) + total) % total;
+      render(current);
+    }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    /* ── Auto-play ── */
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => { if (!paused) next(); }, 4500);
+    }
+    function stopAuto() {
+      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+
+    /* ── Pause au survol ── */
+    scene.addEventListener('mouseenter', () => { paused = true; });
+    scene.addEventListener('mouseleave', () => { paused = false; });
+
+    /* ── Flèches ── */
+    document.getElementById('cfPrev')?.addEventListener('click', () => { prev(); startAuto(); });
+    document.getElementById('cfNext')?.addEventListener('click', () => { next(); startAuto(); });
+
+    /* ── Dots ── */
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const n = parseInt(dot.dataset.goto, 10);
+        goTo(n);
+        startAuto();
+      });
     });
-    showcase.addEventListener('mouseup', () => isDragging = false);
-    showcase.addEventListener('mouseleave', () => isDragging = false);
-  }
+
+    /* ── Swipe tactile ── */
+    let touchStartX = 0;
+    scene.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    scene.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        dx < 0 ? next() : prev();
+        startAuto();
+      }
+    }, { passive: true });
+
+    /* ── Clavier ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { prev(); startAuto(); }
+      if (e.key === 'ArrowRight') { next(); startAuto(); }
+    });
+
+    /* ── Init ── */
+    render(0);
+    startAuto();
+  })();
 
   /* ── Animation titre héro – typewriter effect sur le slogan ── */
   const heroDesc = document.querySelector('.hero-desc');
@@ -143,17 +237,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 600);
   }
 
-  /* ── Glow au survol des téléphones ── */
-  document.querySelectorAll('.phone-mockup').forEach(phone => {
-    phone.addEventListener('mousemove', e => {
-      const rect = phone.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-      const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 20;
-      phone.style.transform = `translateY(-10px) rotateX(${-y}deg) rotateY(${x}deg) scale(1.03)`;
-    });
-    phone.addEventListener('mouseleave', () => {
-      phone.style.transform = '';
-    });
+  /* ── Glow 3D au survol du slide central ── */
+  document.getElementById('cfStage')?.addEventListener('mousemove', e => {
+    const center = document.querySelector('.cf-slide[data-pos="0"] .cf-phone');
+    if (!center) return;
+    const rect = center.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width  - 0.5) * 10;
+    const y = ((e.clientY - rect.top)  / rect.height - 0.5) * 10;
+    center.style.transform = `rotateX(${-y}deg) rotateY(${x}deg)`;
+  });
+  document.getElementById('cfStage')?.addEventListener('mouseleave', () => {
+    const center = document.querySelector('.cf-slide[data-pos="0"] .cf-phone');
+    if (center) center.style.transform = '';
   });
 
   /* ── Year footer ── */

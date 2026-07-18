@@ -63,7 +63,7 @@ img { max-width: 100%; display: block; }
 }
 .nav-logo span { color: var(--or); }
 .nav-brand-name { display: inline-block; white-space: nowrap; }
-.nav-brand-clair { color: var(--or); }
+.nav-brand-clair { color: #ffffff; }
 .nav-logo-icon {
   width: 36px; height: 36px;
   background: var(--or);
@@ -405,71 +405,182 @@ section { padding: 90px 5%; }
 .screenshots { background: linear-gradient(180deg, var(--bleu2) 0%, var(--bleu) 100%); }
 
 /* ══════════════════════════════════════════
-   CARROUSEL INFINI (auto-scroll)
+   COVERFLOW PREMIUM
 ══════════════════════════════════════════ */
-.phones-showcase {
+
+/* Scène principale — contient les flèches + la piste */
+.coverflow-scene {
+  position: relative;
   width: 100%;
-  overflow: hidden;
   margin-top: 56px;
-  padding-bottom: 20px;
-  position: relative;
-  /* masque les bords avec un fondu */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-}
-
-/* Piste intérieure qui défile — contient 2× les cartes pour loop parfait */
-.carousel-track {
   display: flex;
-  gap: 28px;
-  width: max-content;
-  animation: carousel-scroll 32s linear infinite;
-}
-/* Pause au survol */
-.phones-showcase:hover .carousel-track {
-  animation-play-state: paused;
-}
-
-@keyframes carousel-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ── Carte screenshot ── */
-.phone-card {
-  flex: 0 0 220px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  /* Perspective pour l'effet 3D */
+  perspective: 1200px;
+  /* Hauteur fixe pour ne pas couper les téléphones */
+  min-height: 560px;
+  overflow: visible;
 }
 
-.phone-mockup {
+/* Piste 3D — positionné au centre */
+.cf-stage {
   position: relative;
-  width: 220px;
-  transition: transform 0.35s cubic-bezier(.4,0,.2,1), filter 0.35s;
-  border-radius: 6px;
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
 }
-.phone-mockup:hover {
-  transform: translateY(-10px) scale(1.05);
-  filter: drop-shadow(0 28px 44px rgba(217,154,43,0.4));
+
+/* Chaque slide — positionné en absolu, centré */
+.cf-slide {
+  position: absolute;
+  width: 240px;
+  /* Transition fluide sur toutes les propriétés transform */
+  transition:
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity   0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter    0.65s ease;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  /* Les slides cachés ne bloquent pas les clics */
+  pointer-events: none;
 }
-.phone-mockup img {
+
+/* Téléphone intérieur : image sans découpe */
+.cf-phone {
+  width: 240px;
+  border-radius: 36px;
+  overflow: visible;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+  transition: box-shadow 0.65s ease;
+}
+.cf-phone img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 6px;
+  border-radius: 36px;
+  /* Pas de object-fit pour ne jamais couper */
 }
 
-.phone-top-bar { display: none; }
-.phone-screen { display: contents; }
-.phone-screen img { width: 100%; height: auto; border-radius: 6px; }
+/* ── Positions coverflow (assignées via JS) ── */
 
-.phone-label {
-  font-size: 0.82rem; color: var(--gris);
-  text-align: center; font-weight: 600;
-  max-width: 220px; line-height: 1.4;
-  white-space: nowrap;
+/* Slide centrale — grande, nette, au premier plan */
+.cf-slide[data-pos="0"] {
+  transform: translateX(0) scale(1) rotateY(0deg);
+  opacity: 1;
+  filter: none;
+  z-index: 10;
+  pointer-events: auto;
+}
+.cf-slide[data-pos="0"] .cf-phone {
+  box-shadow: 0 40px 100px rgba(217,154,43,0.35), 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Slide de gauche (–1) */
+.cf-slide[data-pos="-1"] {
+  transform: translateX(-70%) scale(0.78) rotateY(28deg);
+  opacity: 0.55;
+  filter: brightness(0.7);
+  z-index: 5;
+}
+
+/* Slide de droite (+1) */
+.cf-slide[data-pos="1"] {
+  transform: translateX(70%) scale(0.78) rotateY(-28deg);
+  opacity: 0.55;
+  filter: brightness(0.7);
+  z-index: 5;
+}
+
+/* Slides éloignées — cachées */
+.cf-slide[data-pos="-2"],
+.cf-slide[data-pos="2"] {
+  transform: translateX(0) scale(0.5);
+  opacity: 0;
+  filter: brightness(0.4);
+  z-index: 1;
+}
+/* États extrêmes pour tous les autres */
+.cf-slide:not([data-pos="0"]):not([data-pos="-1"]):not([data-pos="1"]):not([data-pos="-2"]):not([data-pos="2"]) {
+  transform: translateX(0) scale(0.4);
+  opacity: 0;
+  z-index: 0;
+}
+
+/* ── Flèches de navigation ── */
+.cf-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(217,154,43,0.4);
+  background: rgba(10,18,35,0.7);
+  color: rgba(255,255,255,0.85);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.cf-arrow svg { width: 22px; height: 22px; }
+.cf-arrow:hover {
+  background: var(--or);
+  border-color: var(--or);
+  color: var(--bleu2);
+  transform: translateY(-50%) scale(1.08);
+}
+.cf-arrow-left  { left: 16px; }
+.cf-arrow-right { right: 16px; }
+
+/* ── Caption / titre ── */
+.cf-caption-wrap {
+  text-align: center;
+  margin-top: 28px;
+  min-height: 40px;
+}
+.cf-caption {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  margin: 0;
+}
+.cf-caption.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Indicateurs (dots) ── */
+.cf-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding-bottom: 8px;
+}
+.cf-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+  padding: 0;
+}
+.cf-dot.active {
+  background: var(--or);
+  width: 24px;
+  border-radius: 4px;
+  transform: scaleY(1.1);
 }
 
 /* ══════════════════════════════════════════
@@ -788,10 +899,22 @@ footer {
   .nav-toggle { display: flex; }
   .btn-nav { display: none; }
 
-  /* Carrousel responsive — taille réduite sur mobile */
-  .phone-card { flex: 0 0 175px; }
-  .phone-mockup { width: 175px; }
-  .carousel-track { gap: 18px; }
+  /* Coverflow mobile — un seul téléphone central, flèches repositionnées */
+  .coverflow-scene { min-height: 440px; }
+  .cf-stage { height: 420px; }
+  .cf-slide { width: 195px; }
+  .cf-phone { width: 195px; border-radius: 28px; }
+  .cf-phone img { border-radius: 28px; }
+  /* Sur mobile : masquer les slides latérales pour n'en voir qu'une */
+  .cf-slide[data-pos="-1"],
+  .cf-slide[data-pos="1"] {
+    transform: translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  .cf-arrow-left  { left: 4px; }
+  .cf-arrow-right { right: 4px; }
+  .cf-arrow { width: 40px; height: 40px; }
+  .cf-caption { font-size: 1rem; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; text-align: center; }
