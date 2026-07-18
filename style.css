@@ -286,46 +286,110 @@ img { max-width: 100%; display: block; }
 }
 .phone-hero-frame {
   position: relative; z-index: 2;
-  background: var(--bleu2);
-  border-radius: 40px;
-  padding: 12px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 2px rgba(217,154,43,0.4);
+  background: #0d1124;
+  border-radius: 44px;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px #1e2a4a,
+    0 0 0 5px rgba(217,154,43,0.35),
+    0 30px 80px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.07);
   animation: float-phone 6s ease-in-out infinite;
 }
 @keyframes float-phone {
   0%,100% { transform: translateY(0) rotate(-1deg); }
   50%      { transform: translateY(-18px) rotate(1deg); }
 }
-.phone-hero-frame img {
-  border-radius: 30px; width: 100%;
+/* Notch du téléphone hero */
+.phone-hero-frame::before {
+  content: '';
+  display: block;
+  height: 28px;
+  background: #0d1124;
+  border-radius: 44px 44px 0 0;
+  position: relative; z-index: 3;
 }
-.phone-notch {
-  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-  width: 80px; height: 24px;
-  background: var(--bleu2);
+.phone-hero-frame::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 16px;
+  background: #060a14;
   border-radius: 0 0 14px 14px;
-  z-index: 3;
+  z-index: 4;
 }
+.phone-hero-screen {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  display: block;
+  border-radius: 0 0 38px 38px;
+  background: #1a2340;
+}
+.phone-hero-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.phone-notch { display: none; }
 
 /* Téléphones flottants décoratifs */
 .phone-float {
   position: absolute;
-  background: var(--bleu);
-  border-radius: 30px;
-  padding: 8px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1.5px rgba(217,154,43,0.25);
+  background: #0d1124;
+  border-radius: 34px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px #1e2a4a,
+    0 0 0 4px rgba(217,154,43,0.2),
+    0 20px 50px rgba(0,0,0,0.6);
 }
 .phone-float.left {
-  width: 180px; left: -80px; top: 60px;
+  width: 165px; left: -75px; top: 60px;
   transform: rotate(-8deg);
   animation: float-phone 7s ease-in-out infinite 1s;
 }
 .phone-float.right {
-  width: 160px; right: -60px; bottom: 60px;
+  width: 148px; right: -55px; bottom: 60px;
   transform: rotate(6deg);
   animation: float-phone 5.5s ease-in-out infinite 2s;
 }
-.phone-float img { border-radius: 22px; width: 100%; }
+.phone-float-screen {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  margin-top: 24px;
+  border-radius: 0 0 28px 28px;
+  background: #1a2340;
+}
+.phone-float-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.phone-float::before {
+  content: '';
+  display: block;
+  height: 24px;
+  background: #0d1124;
+  border-radius: 34px 34px 0 0;
+}
+.phone-float::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 44px; height: 12px;
+  background: #060a14;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+}
 
 /* ══════════════════════════════════════════
    SECTIONS COMMUNES
@@ -417,36 +481,86 @@ section { padding: 90px 5%; }
   flex-wrap: wrap;
 }
 .phone-card {
-  flex: 0 0 200px;
+  flex: 0 0 210px;
   scroll-snap-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
 }
+
+/* ── Maquette téléphone réaliste ── */
 .phone-mockup {
-  background: var(--bleu2);
-  border-radius: 36px;
-  padding: 10px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1.5px rgba(217,154,43,0.2);
-  transition: var(--trans);
   position: relative;
-  opacity: 0; transform: translateY(40px);
+  width: 190px;
+  background: #0d1124;
+  border-radius: 38px;
+  padding: 0;
+  box-shadow:
+    0 0 0 2px #1e2a4a,
+    0 0 0 4px #2a3a6a,
+    0 0 0 6px rgba(217,154,43,0.25),
+    0 28px 70px rgba(0,0,0,0.65),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+  transition: var(--trans);
+  opacity: 0;
+  transform: translateY(40px);
+  overflow: hidden;
 }
 .phone-mockup.visible {
   opacity: 1; transform: translateY(0);
 }
 .phone-mockup:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 0 2px rgba(217,154,43,0.5);
+  transform: translateY(-12px) scale(1.04);
+  box-shadow:
+    0 0 0 2px #1e2a4a,
+    0 0 0 4px #2a3a6a,
+    0 0 0 6px rgba(217,154,43,0.45),
+    0 40px 80px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
 }
-.phone-mockup img { border-radius: 28px; width: 180px; display: block; }
+
+/* Notch dynamique en haut */
 .phone-top-bar {
-  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  width: 60px; height: 18px;
-  background: var(--bleu2); border-radius: 0 0 10px 10px; z-index: 2;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 28px;
+  background: #0d1124;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 38px 38px 0 0;
 }
+.phone-top-bar::after {
+  content: '';
+  width: 52px; height: 14px;
+  background: #060a14;
+  border-radius: 0 0 12px 12px;
+  display: block;
+}
+
+/* Écran avec hauteur fixe — image cadrée depuis le haut */
+.phone-screen {
+  width: 100%;
+  height: 390px;
+  overflow: hidden;
+  display: block;
+  margin-top: 28px;
+  border-radius: 0 0 32px 32px;
+  background: #1a2340;
+}
+.phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 0;
+}
+
 .phone-label {
-  font-size: 0.78rem; color: var(--gris);
-  text-align: center; font-weight: 500;
-  max-width: 180px; line-height: 1.4;
+  font-size: 0.8rem; color: var(--gris);
+  text-align: center; font-weight: 600;
+  max-width: 190px; line-height: 1.4;
+  letter-spacing: 0.2px;
 }
 
 /* ══════════════════════════════════════════
@@ -765,8 +879,10 @@ footer {
   .btn-nav { display: none; }
 
   .phones-showcase { flex-wrap: nowrap; justify-content: flex-start; }
-  .phone-card { flex: 0 0 170px; }
-  .phone-mockup img { width: 150px; }
+  .phone-card { flex: 0 0 160px; }
+  .phone-mockup { width: 150px; }
+  .phone-screen { height: 310px; }
+  .phone-float-screen { height: 260px; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; text-align: center; }
