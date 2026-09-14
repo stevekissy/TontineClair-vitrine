@@ -929,3 +929,116 @@ footer {
   .hero-btns { flex-direction: column; align-items: center; }
   .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
 }
+
+/* ══════════════════════════════════════
+   SECTION VIDÉO DÉMO
+══════════════════════════════════════ */
+.video-demo-section {
+  background: linear-gradient(180deg, #0d1128 0%, #141933 50%, #0d1128 100%);
+  padding: 90px 6%;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-demo-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(217,154,43,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.video-demo-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.video-demo-label {
+  text-align: center;
+}
+
+.video-demo-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(217,154,43,0.25),
+    0 30px 80px rgba(0,0,0,0.6),
+    0 0 60px rgba(217,154,43,0.12);
+}
+
+.video-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(217,154,43,0.4), transparent 50%, rgba(217,154,43,0.2));
+  z-index: 0;
+  pointer-events: none;
+}
+
+.demo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  position: relative;
+  z-index: 1;
+  background: #0d1128;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.video-play-overlay:hover {
+  background: rgba(0,0,0,0.15);
+}
+
+.video-play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(217,154,43,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.3s;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 20px rgba(217,154,43,0.5);
+}
+
+.video-play-btn.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.video-play-overlay:hover .video-play-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .video-demo-section { padding: 60px 5%; }
+  .video-demo-wrapper { border-radius: 14px; }
+  .demo-video { border-radius: 12px; }
+}
