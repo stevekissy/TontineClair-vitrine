@@ -257,31 +257,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-/* ── Vidéo démo : toggle play/pause ── */
-function toggleVideo() {
-  const video = document.getElementById('demo-video');
-  const btn   = document.getElementById('play-btn');
+/* ── Vidéo démo : lancement avec son sur clic utilisateur ── */
+function startVideo() {
+  const video   = document.getElementById('demo-video');
+  const overlay = document.getElementById('video-overlay');
   if (!video) return;
 
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
-    btn.classList.remove('visible');
-  } else {
-    video.pause();
-    btn.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
-    btn.classList.add('visible');
-  }
+  video.play().then(() => {
+    // Lecture lancée → cacher l'overlay
+    if (overlay) overlay.style.display = 'none';
+  }).catch(err => {
+    console.warn('Lecture impossible:', err);
+  });
 }
 
-// Autoplay avec son coupé — afficher bouton pause au hover seulement
+// Clic sur la vidéo directement → toggle pause/play
 document.addEventListener('DOMContentLoaded', function() {
-  const video = document.getElementById('demo-video');
+  const video   = document.getElementById('demo-video');
+  const overlay = document.getElementById('video-overlay');
   if (!video) return;
 
-  video.play().catch(() => {
-    // Autoplay bloqué par le navigateur → afficher le bouton play
-    const btn = document.getElementById('play-btn');
-    if (btn) btn.classList.add('visible');
+  video.addEventListener('click', function() {
+    if (video.paused) {
+      video.play();
+      if (overlay) overlay.style.display = 'none';
+    } else {
+      video.pause();
+      if (overlay) {
+        overlay.style.display = 'flex';
+        const btn = document.getElementById('play-btn');
+        if (btn) btn.innerHTML = '<svg width="36" height="36" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+      }
+    }
   });
 });

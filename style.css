@@ -1037,6 +1037,25 @@ footer {
   transform: scale(1);
 }
 
+.video-play-label {
+  position: absolute;
+  bottom: calc(50% - 60px);
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  white-space: nowrap;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.video-play-overlay:hover .video-play-label {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   .video-demo-section { padding: 60px 5%; }
   .video-demo-wrapper { border-radius: 14px; }
